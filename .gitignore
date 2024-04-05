@@ -1,0 +1,9 @@
+node_modules
+.prettierrc
+package-lock.json
+.env
+artifacts
+gas-report.txt
+yarn.lock
+cache
+.vscode
