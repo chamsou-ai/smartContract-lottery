@@ -167,14 +167,12 @@ const {
             await accountConnectedRaffle.enterRaffle({
               value: raffleEntranceFee,
             });
-            console.log(accounts[i].address)
           }
           const startingTimeStamp = await raffle.getLatesTimeStamp();
-          console.log(startingTimeStamp);
           await new Promise(async (resolve, reject) => {
             raffle.once("WinnerPicked", async () => {
+              console.log("Found the Event!");
               try {
-                console.log("Found the Event!");
                 const recentWinner = await raffle.getRecentWinner();
                 console.log(recentWinner);
                 console.log(accounts[0].address);
@@ -194,12 +192,12 @@ const {
               resolve();
             });
 
+            // const winnerStartingBalance = await accounts[1].getBalance()
+            // console.log(winnerStartingBalance)
             const tx = await raffle.performUpkeep("0x");
-            console.log(`This tx : ${tx}`)
             const txReceipt = await tx.wait(1);
-            console.log(`This tx  receipt : ${txReceipt}`);
             await vrfCoordinatorV2Mock.fulfillRandomWords(
-              txReceipt.logs[0].args.requestId,
+              txReceipt.logs[1].args.requestId,
               raffle.target
             );
           });
