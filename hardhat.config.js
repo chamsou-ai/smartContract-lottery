@@ -6,10 +6,11 @@ require("hardhat-gas-reporter");
 require("hardhat-contract-sizer");
 require("dotenv").config();
 
-const SEPOLIA_RPC_URL = process.env.SEPOLIA_RPC_URL || "https://eth-sepolia";
-const PRIVATE_KEY = process.env.PRIVATE_KEY || "0x..";
-const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY || "key";
-const COINMARKET_API_KEY = process.env.COINMARKET_API_KEY || "key";
+const SEPOLIA_RPC_URL = process.env.SEPOLIA_RPC_URL;
+console.log(process.env.SEPOLIA_RPC_URL)
+const PRIVATE_KEY = process.env.PRIVATE_KEY 
+const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY;
+const COINMARKET_API_KEY = process.env.COINMARKET_API_KEY;
 
 module.exports = {
   defaultNetwork: "hardhat",

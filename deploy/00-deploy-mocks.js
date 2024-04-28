@@ -7,18 +7,17 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
   const { deployer } = await getNamedAccounts();
   const args = [BASE_FEE, GAS_PRICE_LINK];
 
-  if (developmentChains.includes(network.name))
+  if (developmentChains.includes(network.name)) {
     log("local network detected! Deploy mocks...");
-  //deploy a mock vrfCoordinatorV2
-  await deploy("VRFCoordinatorV2Mock", {
-    from: deployer,
-    log: true,
-    args: args,
-  });
-
+    //deploy a mock vrfCoordinatorV2
+    await deploy("VRFCoordinatorV2Mock", {
+      from: deployer,
+      log: true,
+      args: args,
+    });
+  }
   log("Mocks deployed!");
   log("-----------------------------------");
-  
 };
 
-module.exports.tags = ["all","mocks"]
+module.exports.tags = ["all", "mocks"];
